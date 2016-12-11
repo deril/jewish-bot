@@ -87,7 +87,7 @@
 (defn send-photo
   "Sends an image to the chat"
   ([token chat-id image] (send-photo token chat-id {} image))
-  ([token chat-id options image] 
+  ([token chat-id options image]
    (assert-file-type image ["jpg" "jpeg" "gif" "png" "tif" "bmp"])
    (send-file token chat-id options image "/sendPhoto" "photo" "photo.png")))
 

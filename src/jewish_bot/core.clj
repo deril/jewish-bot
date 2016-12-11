@@ -2,11 +2,13 @@
   (:require [jewish-bot.telegram.handlers :refer :all]
             [jewish-bot.telegram.polling :as p]
             [jewish-bot.telegram.api :as api]
+
             [environ.core :refer [env]]
 
             [jewish-bot.exchange :as exchange  :refer [exchange]]
             [jewish-bot.urban-dictionary :as urban-dictionary :refer [ud]]
-            [jewish-bot.duckduckgo :as duckduckgo :refer [go]])
+            [jewish-bot.duckduckgo :as duckduckgo :refer [go]]
+            [jewish-bot.dice :as dice :only [roll]])
   (:import [org.apache.commons.daemon Daemon DaemonContext])
   (:gen-class
     :implements [org.apache.commons.daemon.Daemon]))
@@ -26,7 +28,10 @@
            (urban-dictionary/ud token chat-id attributes))
   (command "go"
            {attributes :text {chat-id :id} :chat}
-           (duckduckgo/go token chat-id attributes)))
+           (duckduckgo/go token chat-id attributes))
+  (command "dice"
+           {attributes :text {username :username} :from {chat-id :id} :chat}
+           (dice/roll token chat-id attributes username)))
 
 (def channel (p/start token bot-api))
 
