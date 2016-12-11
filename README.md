@@ -9,6 +9,7 @@ efforts of the vCloud & Application Server teams members.
 * ex - Currency exchanges
 * ud - Urban Dictionary definition
 * help - prints help message
+* go - DuckDuckGo instant search (beta)
 
 ## License
 

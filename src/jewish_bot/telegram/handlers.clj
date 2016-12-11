@@ -21,7 +21,14 @@
 
 (defn command?
   [update name]
-  (some-> update :message :text (s/starts-with? (str "/" name))))
+  (some-> update
+          :message
+          :text
+          (s/split #"\s+")
+          (first)
+          (s/split #"@")
+          (first)
+          (= (str "/" name))))
 
 (defmacro command
   "Generate command handler"

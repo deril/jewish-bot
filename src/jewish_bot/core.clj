@@ -5,7 +5,8 @@
             [environ.core :refer [env]]
 
             [jewish-bot.exchange :as exchange  :refer [exchange]]
-            [jewish-bot.urban-dictionary :as urban-dictionary :refer [ud]])
+            [jewish-bot.urban-dictionary :as urban-dictionary :refer [ud]]
+            [jewish-bot.duckduckgo :as duckduckgo :refer [go]])
   (:import [org.apache.commons.daemon Daemon DaemonContext])
   (:gen-class
     :implements [org.apache.commons.daemon.Daemon]))
@@ -22,7 +23,10 @@
            (exchange/exchange token chat-id attributes))
   (command "ud"
            {attributes :text {chat-id :id} :chat}
-           (urban-dictionary/ud token chat-id attributes)))
+           (urban-dictionary/ud token chat-id attributes))
+  (command "go"
+           {attributes :text {chat-id :id} :chat}
+           (duckduckgo/go token chat-id attributes)))
 
 (def channel (p/start token bot-api))
 
@@ -53,4 +57,3 @@
 (defn -main [& args]
   (init args)
   (start))
-

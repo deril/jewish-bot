@@ -1,4 +1,4 @@
-(defproject jewish-bot "0.1.0-SNAPSHOT"
+(defproject jewish-bot "0.2.0-SNAPSHOT"
   :description "Telegram bot for Post-Apocalyptic B. community"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}

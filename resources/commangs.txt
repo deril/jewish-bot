@@ -1,0 +1,9 @@
+help - show help message
+ex - exchange currency. Format XXX:YYY amount
+ud - define word using Urban Dictionary
+go - search on DuckDuckGo (beta)
+
+
+
+redtube - search video on RedTube
+
